@@ -1,10 +1,11 @@
 {% extends 'blog/base.html' %}
 {% block content %}
       <div  class="post">
-                <div class="fecha_publicacion">
+                <div class="date">
                     <p> publicado: {{ p.fecha_publicacion }} </p>
-                      <h1>  <a href = "{% url 'detalle_pub' pk=p.pk %}" >{{ p.titulo }}</a></h1 >
-                    <p>{{ p.texto|linebreaksbr }} </p>
                 </div>
+                <a class="btn btn-default" href="{% url 'editar_pub' pk=p.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <h1>  <a href = "{% url 'detalle_pub' pk=p.pk %}" >{{ p.titulo }}</a></h1 >
+                <p>{{ p.texto|linebreaksbr }} </p>
       </div>
 {%endblock%}
