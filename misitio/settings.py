@@ -25,7 +25,7 @@ SECRET_KEY = 'yc-r(yrempim8f*c^bg#8_!f#!@t@0+i5+e%gjnt9fns$gwwbc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['pythonanywhere.com','guateapps.pythonanywhere.com']
+ALLOWED_HOSTS = ['.pythonanywhere.com','.pythonanywhere.com.']
 
 
 # Application definition
