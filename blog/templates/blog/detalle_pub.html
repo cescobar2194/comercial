@@ -1,16 +1,11 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-        <div class="post">
-        {% if p.fecha_publicacion %}
-          <div class="date">
-            <p>Fecha de Publicacion: {{ p.fecha_publicacion }}
-          </div>
-        {% else %}
-          <a class="btn btn-default" href="{% url 'publicar_publicacion' pk=p.pk %}">Publicar</a>
-        {% endif %}
-          <a class="btn btn-default" href="{% url 'editar_pub' pk=p.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-          <a class="btn btn-default" href="{% url 'eliminar_publicacion' pk=p.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-        <h1><a>{{ p.titulo }}</a></h1>
-        <p>{{ p.texto|linebreaksbr }}</p>
-    </div>
-{% endblock %}
+      <div  class="post">
+                <div class="date">
+                    <p> publicado: {{ p.fecha_publicacion }} </p>
+                </div>
+                <a class="btn btn-default" href="{% url 'editar_pub' pk=p.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <h1>  <a href = "{% url 'detalle_pub' pk=p.pk %}" >{{ p.titulo }}</a></h1 >
+                <p>{{ p.texto|linebreaksbr }} </p>
+      </div>
+{%endblock%}
