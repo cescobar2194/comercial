@@ -1,18 +1,18 @@
 {% extends 'blog/base.html' %}
 {% block content %}
         <div class="post">
-        {% if pubs.fecha_publicacion %}
+        {% if p.fecha_publicacion %}
           <div class="date">
-            <p>Fecha de Publicacion: {{ pubs.fecha_publicacion }}
+            <p>Fecha de Publicacion: {{ p.fecha_publicacion }}
           </div>
         {% else %}
-          <a class="btn btn-default" href="{% url 'publicar_publicacion' pk=pubs.pk %}">Publicar</a>
+          <a class="btn btn-default" href="{% url 'publicar_publicacion' pk=p.pk %}">Publicar</a>
         {% endif %}
         {% if user.is_authenticated %}
-          <a class="btn btn-default" href="{% url 'editar_pub' pk=pubs.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-          <a class="btn btn-default" href="{% url 'eliminar_publicacion' pk=pubs.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+          <a class="btn btn-default" href="{% url 'editar_pub' pk=p.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+          <a class="btn btn-default" href="{% url 'eliminar_publicacion' pk=p.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
         {% endif %}
-        <h1><a>{{ pubs.titulo }}</a></h1>
-        <p>{{ pubs.texto|linebreaksbr }}</p>
+        <h1><a>{{ p.titulo }}</a></h1>
+        <p>{{ p.texto|linebreaksbr }}</p>
     </div>
 {% endblock %}
