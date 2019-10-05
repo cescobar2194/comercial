@@ -37,3 +37,17 @@ def editar_pub(request, pk):
     else:
         f = PubForm(instance=p)
     return render(request, 'blog/editar_pub.html', {'f': f})
+
+def lista_borradores(request):
+    posts = Publicacion.objects.filter(fecha_publicacion__isnull=True).order_by('fecha_creacion')
+    return render(request, 'blog/lista_borradores.html', {'posts': posts})
+
+def publicar_publicacion(request, pk):
+    post = get_object_or_404(Publicacion, pk=pk)
+    post.publicar()
+    return redirect('detalle_pub', pk=pk)
+
+def eliminar_publicacion(request, pk):
+    post = get_object_or_404(Publicacion, pk=pk)
+    post.delete()
+    return redirect('listar_pub')
