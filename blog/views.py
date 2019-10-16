@@ -17,7 +17,6 @@ def nueva_pub(request):
         if f.is_valid():
             p = f.save(commit=False)
             p.autor = request.user
-            p.fecha_publicacion = timezone.now()
             p.save()
             return redirect('detalle_pub', pk=p.pk)
     else:
@@ -31,7 +30,6 @@ def editar_pub(request, pk):
         if f.is_valid():
             p = form.save(commit=False)
             p.autor = request.user
-            p.fecha_publicacion = timezone.now()
             p.save()
             return redirect('detalle_pub', pk=p.pk)
     else:
@@ -39,8 +37,8 @@ def editar_pub(request, pk):
     return render(request, 'blog/editar_pub.html', {'f': f})
 
 def lista_borradores(request):
-    posts = Publicacion.objects.filter(fecha_publicacion__isnull=True).order_by('fecha_creacion')
-    return render(request, 'blog/lista_borradores.html', {'posts': posts})
+    pubs = Publicacion.objects.filter(fecha_publicacion__isnull=True).order_by('fecha_creacion')
+    return render(request, 'blog/lista_borradores.html', {'pubs': pubs})
 
 def publicar_publicacion(request, pk):
     post = get_object_or_404(Publicacion, pk=pk)
