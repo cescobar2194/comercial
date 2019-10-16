@@ -3,7 +3,7 @@
 {% block content %}
     {% for p in pubs %}
         <div class="post">
-            <p class="date">Fecha de Creacion: {{ post.fecha_creacion|date:'d-m-Y' }}</p>
+            <p class="date">Fecha de Creacion: {{ post.fecha_publicacion | date:'d-m-Y' }}</p>
             <h1><a href="{% url 'detalle_pub' pk=post.pk %}">{{ p.titulo }}</a></h1>
             <p>{{ p.texto|truncatechars:200 }}</p>
         </div>
